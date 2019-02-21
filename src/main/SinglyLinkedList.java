@@ -10,6 +10,21 @@ public class SinglyLinkedList {
        head = new Node(value,head);
     }
 
+    public String toString(){
+        StringBuilder result = new StringBuilder();
+        //String is immutable whereas StringBUilder is mutable
+        Node temp = head;
+        System.out.print ("[");
+        while(temp != null){//next dose not point to null
+            result.append ( temp.data );
+            if(temp.next != null){
+                result.append ( " => " );
+            }
+            temp=temp.next;
+        }
+        return result.append ( "]" ).toString();
+    }
+
     private static class Node{
         private int data;
         private Node next;
@@ -27,5 +42,9 @@ public class SinglyLinkedList {
 
     public static void main ( String[] args ) {
         SinglyLinkedList linkedList = new SinglyLinkedList ();
+        for (int i = 0; i < 5; i++) {
+            linkedList.insert ( i+1 );
+        }
+        System.out.println (linkedList);
     }
 }
